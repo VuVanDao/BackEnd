@@ -1,9 +1,6 @@
 const express = require("express");
 const router = express.Router();
-router.get("/", (req, res) => {
-  res.send("Hello World!!!!!!!!!!!!!");
-});
-router.get("/dao", (req, res) => {
-  res.render("sample.ejs");
-});
+const { getHomepage, getDao } = require("../controllers/homeController");
+router.get("/", getHomepage);
+router.get("/dao", getDao);
 module.exports = router;
