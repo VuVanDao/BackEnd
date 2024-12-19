@@ -12,10 +12,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 configViewEngine(app);
 app.use("/", webRoutes);
-
-connection.query("SELECT * FROM `Users` ", (err, result) => {
-  // console.log(">>>", result);
-});
 app.listen(port, hostname, () => {
   console.log(`Example app listening on port ${port}`);
 });

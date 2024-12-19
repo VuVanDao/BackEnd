@@ -60,3 +60,6 @@ div {
   background-color: #f2f2f2;
   padding: 20px;
 }
+.active {
+  background-color: #04aa6d;
+}
