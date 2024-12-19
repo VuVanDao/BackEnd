@@ -1,10 +1,16 @@
 const connection = require("../config/database");
+const { get } = require("../routers/web");
+const { getAllUsers } = require("../services/CRUDservice");
 
-const getHomepage = (req, res) => {
-  res.render("homePage.ejs");
+const getHomepage = async (req, res) => {
+  let result = await getAllUsers();
+  res.render("homePage.ejs", { ListUsers: result });
 };
 const getCreateUser = (req, res) => {
   res.render("createUser.ejs");
+};
+const getEditUser = (req, res) => {
+  res.render("editUser.ejs");
 };
 const getDao = (req, res) => {
   res.render("sample.ejs");
@@ -29,4 +35,5 @@ module.exports = {
   getDao: getDao,
   createUser: createUser,
   getCreateUser: getCreateUser,
+  getEditUser: getEditUser,
 };
