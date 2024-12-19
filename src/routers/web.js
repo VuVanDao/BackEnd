@@ -9,7 +9,7 @@ const {
 } = require("../controllers/homeController");
 router.get("/", getHomepage);
 router.get("/create", getCreateUser);
-router.get("/edit", getEditUser);
+router.get("/update/:id", getEditUser);
 router.get("/dao", getDao);
 router.post("/create-user", createUser);
 module.exports = router;

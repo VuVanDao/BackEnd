@@ -1,6 +1,6 @@
 const connection = require("../config/database");
 const { get } = require("../routers/web");
-const { getAllUsers } = require("../services/CRUDservice");
+const { getAllUsers, getEditUsers } = require("../services/CRUDservice");
 
 const getHomepage = async (req, res) => {
   let result = await getAllUsers();
@@ -9,8 +9,13 @@ const getHomepage = async (req, res) => {
 const getCreateUser = (req, res) => {
   res.render("createUser.ejs");
 };
-const getEditUser = (req, res) => {
-  res.render("editUser.ejs");
+const getEditUser = async (req, res) => {
+  let result = await getEditUsers(req.params.id);
+  if (result.length > 0 && result) {
+    res.render("editUser.ejs", { user: result[0] });
+  } else {
+    res.send("User not found");
+  }
 };
 const getDao = (req, res) => {
   res.render("sample.ejs");
