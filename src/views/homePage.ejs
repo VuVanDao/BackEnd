@@ -28,9 +28,13 @@
           <td><%= users.email %></td>
           <td><%= users.city %></td>
           <td>
-            <div>
+            <div
+              style="display: flex; gap: 20px; justify-content: space-around"
+            >
               <button><a href="/update/<%=users.id%>">update</a></button>
-              <button>delete</button>
+              <form action="delete-user/<%=users.id%>" method="post">
+                <button>delete</button>
+              </form>
             </div>
           </td>
         </tr>

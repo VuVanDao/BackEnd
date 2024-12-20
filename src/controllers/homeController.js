@@ -5,6 +5,8 @@ const {
   getEditUsers,
   updateUsers,
   createUsers,
+  getDeleteUsers,
+  deleteUsers,
 } = require("../services/CRUDservice");
 
 const getHomepage = async (req, res) => {
@@ -45,6 +47,23 @@ const updateUser = async (req, res) => {
     res.send("Error in updating user");
   }
 };
+const getDeleteUSer = async (req, res) => {
+  let result = await getDeleteUsers(req.params.id);
+  if (result.length > 0 && result) {
+    res.render("deleteUser.ejs", { user: result[0] });
+  } else {
+    res.send("User not found");
+  }
+};
+const deleteUSer = async (req, res) => {
+  let id = req.body.id;
+  let result = await deleteUsers(id);
+  if (result) {
+    res.redirect("/");
+  } else {
+    res.send("User not found");
+  }
+};
 const getDao = (req, res) => {
   res.render("sample.ejs");
 };
@@ -56,4 +75,6 @@ module.exports = {
   getCreateUser: getCreateUser,
   getEditUser: getEditUser,
   updateUser: updateUser,
+  getDeleteUSer: getDeleteUSer,
+  deleteUSer: deleteUSer,
 };
