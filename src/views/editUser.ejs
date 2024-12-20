@@ -15,7 +15,17 @@
     </ul>
 
     <div class="form-container">
-      <form action="/create-user" method="post">
+      <form action="/update-user" method="post">
+        <div style="display: none">
+          <label for="id">id</label>
+          <input
+            type="text"
+            id="id"
+            name="id"
+            placeholder="Your email.."
+            value="<%= user.id %>"
+          />
+        </div>
         <label for="email">Email</label>
         <input
           type="text"
